@@ -1,0 +1,9 @@
+Test Cases,heroLevel,manaInvested,Result
+1,-10,10,Exception
+3,100,10,Exception
+4,10,-10,Exception
+5,10,700,Exception
+10,0,10,Exception
+12,51,10,Exception
+13,10,0,Exception
+17,10,601,Exception

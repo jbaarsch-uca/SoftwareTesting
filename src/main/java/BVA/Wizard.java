@@ -1,4 +1,4 @@
-package EquivalencePartitions;
+package BVA;
 
 public class Wizard {
     final int MAX_MANA_STORE = 600;
@@ -17,7 +17,7 @@ public class Wizard {
     public int spellSurge(int heroLevel, int manaInvested) {
         if (heroLevel < MIN_LEVEL)
             throw new IllegalArgumentException("Hero level must be at least 1");
-        if (manaInvested <= MIN_MANA_INVESTED)
+        if (manaInvested < MIN_MANA_INVESTED)
             throw new IllegalArgumentException("Mana invested must be positive");
         if (heroLevel > MAX_LEVEL)
             throw new IllegalArgumentException("Hero level must be less than 50");
