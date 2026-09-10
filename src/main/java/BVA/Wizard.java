@@ -10,19 +10,23 @@ public class Wizard {
     final double OVERCHARGE_BONUS = 1.5;
     private int HP;
     private int manaStore = MAX_MANA_STORE;
+    public final String minLevelError = "Hero level must be at least 1";
+    public final String maxLevelError = "Hero level must be less than 51";
+    public final String negativeManaInvestedError = "Mana invested must be positive";
+    public final String manaInvestedError = "Mana invested must be less than mana store";
 
     // Okay, so heroLevel would probably be an internal variable, but it is easier
     // to write unit tests if we send it in as a parameter.  We'll do OOP testing
     // later.
-    public int spellSurge(int heroLevel, int manaInvested) {
+    public int spellSurge(int heroLevel, int manaInvested) throws WizardException {
         if (heroLevel < MIN_LEVEL)
-            throw new IllegalArgumentException("Hero level must be at least 1");
+            throw new HeroLevelException(minLevelError);
         if (manaInvested < MIN_MANA_INVESTED)
-            throw new IllegalArgumentException("Mana invested must be positive");
+            throw new ManaInvestedException(negativeManaInvestedError);
         if (heroLevel > MAX_LEVEL)
-            throw new IllegalArgumentException("Hero level must be less than 50");
+            throw new HeroLevelException(maxLevelError);
         if (manaInvested > manaStore)
-            throw new IllegalArgumentException("Mana invested must be less than or equal to mana store");
+            throw new ManaInvestedException(manaInvestedError);
         if (manaInvested <= SAFE_CAST_MOD * heroLevel)
             return manaInvested;
         if (manaInvested <= OVERCHARGE_MOD * heroLevel)

@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-
-
-
 public class SpellSurgeTest {
 
     @ParameterizedTest
@@ -22,13 +19,13 @@ public class SpellSurgeTest {
 
     @ParameterizedTest
     @CsvFileSource(resources="/SpellSurge ExampleErrorTests.csv", numLinesToSkip = 1)
-    public void testSpellSurge(String testCaseName, int heroLevel, int manaInvested, int damage ) {
+    public void testSpellSurgeErrors(String testCaseName, int heroLevel, int manaInvested, String exceptionCode ) {
         Wizard harryPotter = new Wizard();
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> { harryPotter.spellSurge(heroLevel, manaInvested)
+                () -> { harryPotter.spellSurge(heroLevel, manaInvested);
                 });
-
+        assertEquals(exceptionCode, exception.getMessage(), "" + testCaseName + " failed.");
 
     }
 
