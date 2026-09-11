@@ -1,9 +1,9 @@
-Test Cases,heroLevel,manaInvested,Result
-1,-10,10,"Hero level must be at least 1"
-3,100,10,"Hero level must be less than 51"
-4,10,-10,"Mana invested must be positive"
-5,10,700,"Mana invested must be less than mana store"
-10,0,10,"Hero level must be at least 1"
-12,51,10,"Hero level must be less than 51"
-13,10,0,"Mana invested must be positive"
-17,10,601,"Mana invested must be less than mana store"
+Test Cases,heroLevel,manaInvested,Result, Exception Type
+1,-10,10,"Hero level must be at least 1", HeroLevelException
+3,100,10,"Hero level must be less than 51", HeroLevelException
+4,10,-10,"Mana invested must be positive", ManaInvestedException
+5,10,700,"Mana invested must be less than mana store", ManaInvestedException
+10,0,10,"Hero level must be at least 1", HeroLevelException
+12,51,10,"Hero level must be less than 51", HeroLevelException
+13,10,0,"Mana invested must be positive", ManaInvestedException
+17,10,601,"Mana invested must be less than mana store", ManaInvestedException

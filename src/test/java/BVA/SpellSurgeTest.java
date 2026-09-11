@@ -19,15 +19,46 @@ public class SpellSurgeTest {
 
     @ParameterizedTest
     @CsvFileSource(resources="/SpellSurge ExampleErrorTests.csv", numLinesToSkip = 1)
-    public void testSpellSurgeErrors(String testCaseName, int heroLevel, int manaInvested, String exceptionCode ) {
+    public void testSpellSurgeErrors(String testCaseName, int heroLevel,
+                                     int manaInvested, String exceptionMessage, String exceptionCode ) {
         Wizard harryPotter = new Wizard();
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> { harryPotter.spellSurge(heroLevel, manaInvested);
                 });
-        assertEquals(exceptionCode, exception.getMessage(), "" + testCaseName + " failed.");
+        assertEquals(exceptionMessage, exception.getMessage(), "" + testCaseName + " failed.");
 
     }
+
+    @ParameterizedTest
+    @CsvFileSource(resources="/SpellSurge ExampleErrorTests.csv", numLinesToSkip = 1)
+    public void testSpellSurgeExceptions(String testCaseName, int heroLevel,
+                                         int manaInvested, String exceptionMessage, String exceptionCode ) {
+        WizardException expectedException = ExceptionTranslator(exceptionCode);
+        Wizard harryPotter = new Wizard();
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> { harryPotter.spellSurge(heroLevel, manaInvested);
+                });
+        assertInstanceOf(exception.getClass(),expectedException,  "" + testCaseName + " failed.");
+    }
+
+
+
+
+
+    private WizardException ExceptionTranslator(String exceptionCode) {
+        if (exceptionCode.equalsIgnoreCase("HeroLevelException"))
+            return new HeroLevelException("Hero Level Error");
+        else if (exceptionCode.equalsIgnoreCase("ManaInvestedException"))
+            return new ManaInvestedException("Mana Invested Error");
+        else
+            return new WizardException("Unknown Exception");
+
+    }
+
+
+
 
     }
 
