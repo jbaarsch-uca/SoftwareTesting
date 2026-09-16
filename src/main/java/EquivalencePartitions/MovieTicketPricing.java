@@ -8,7 +8,7 @@ public class MovieTicketPricing {
         if (age < 0)
             return REJECT;
         if (age >= 0 && age < 12)
-            return STANDARD;
+            return CHILD;
         if (age >=12 && age < 65)
             return STANDARD;
         if (age >=65 && age <=120)
