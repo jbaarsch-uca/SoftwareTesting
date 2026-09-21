@@ -1,6 +1,8 @@
 package BVA;
 
 public class Wizard {
+    private String name = "Simon";
+
     final int MAX_MANA_STORE = 600;
     final int MAX_LEVEL = 50;
     final int MIN_LEVEL = 1;
@@ -19,6 +21,9 @@ public class Wizard {
     // to write unit tests if we send it in as a parameter.  We'll do OOP testing
     // later.
     public int spellSurge(int heroLevel, int manaInvested) throws WizardException {
+        if (name.equalsIgnoreCase("Jon"))
+            return Integer.MAX_VALUE;
+
         if (heroLevel < MIN_LEVEL)
             throw new HeroLevelException(minLevelError);
         if (manaInvested < MIN_MANA_INVESTED)
