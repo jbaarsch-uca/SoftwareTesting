@@ -1,0 +1,5 @@
+Test Case,age,isMember,result
+TC1,-10,TRUE,"Invalid age"
+TC5,150,TRUE,"Invalid age"
+TC10,-1,TRUE,"Invalid age"
+TC13,121,TRUE,"Invalid age"

@@ -40,7 +40,7 @@ public class SpellSurgeTest {
                 IllegalArgumentException.class,
                 () -> { harryPotter.spellSurge(heroLevel, manaInvested);
                 });
-        assertInstanceOf(exception.getClass(),expectedException,  "" + testCaseName + " failed.");
+        assertInstanceOf(exception.getClass(), expectedException,  "" + testCaseName + " failed.");
     }
 
 

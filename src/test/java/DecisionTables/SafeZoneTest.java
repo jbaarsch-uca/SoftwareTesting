@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 public class SafeZoneTest {
 
     @ParameterizedTest
-    @CsvFileSource(resources="/SpellSurge ExampleErrorTests.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources="/SafeZoneGateTestCases.csv", numLinesToSkip = 1)
     public void testEvaluateSurvivor(String testID,
                                      double bodyTempCelsius,
                                      int hoursSinceBitten,
