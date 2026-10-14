@@ -100,6 +100,7 @@ public class Wizard extends Spellcaster {
 
     public int castSpell(Object target) {
         // Fallback overload returning flat damage
+
         return 10;
     }
 }
